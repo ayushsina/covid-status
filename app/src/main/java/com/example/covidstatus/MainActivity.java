@@ -3,11 +3,14 @@ package com.example.covidstatus;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private String str_confirmed, str_confirmed_new, str_active, str_active_new, str_recovered, str_recovered_new,
             str_death, str_death_new, str_tests, str_tests_new, str_last_update_time;
 
-    private LinearLayout lin_state_data, lin_world_data;
+    private LinearLayout lin_state_data;
     private SwipeRefreshLayout swipeRefreshLayout;
     private int int_active_new;
 
@@ -44,9 +47,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setTitle("COVID STATUS (INDIA)");
+
         Init();
         FetchData();
 
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                FetchData();
+                swipeRefreshLayout.setRefreshing(false);
+                //Toast.makeText(MainActivity.this, "Data refreshed!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        lin_state_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(MainActivity.this, "state data", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this,StateWiseDataActivity.class));
+            }
+        });
 
 
 
@@ -167,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
         tv_date = findViewById(R.id.activity_main_date_textview);
         tv_time = findViewById(R.id.activity_main_time_textview);
         swipeRefreshLayout=findViewById(R.id.activity_main_swipe_refresh_layout);
+        lin_state_data=findViewById(R.id.activity_main_statewise_lin);
     }
 
 
