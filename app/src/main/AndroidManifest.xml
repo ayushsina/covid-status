@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CovidStatus">
-        <activity android:name=".StateWiseDataActivity"></activity>
+        <activity android:name=".WorldDataActivity"></activity>
+        <activity android:name=".StateWiseDataActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -29,7 +29,7 @@ public class StateWiseDataActivity extends AppCompatActivity {
     private StateWiseAdapter stateWiseAdapter;
     private ArrayList<StateWiseModel> stateWiseModelArrayList;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private EditText et_search;
+
 
     private String str_state, str_confirmed, str_confirmed_new, str_active, str_active_new, str_recovered, str_recovered_new,
             str_death, str_death_new, str_lastupdatedate;
@@ -41,9 +41,6 @@ public class StateWiseDataActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_state_wise_data);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         Init();
         FetchStateWiseData();
         getSupportActionBar().setTitle("STATE WISE DATA");

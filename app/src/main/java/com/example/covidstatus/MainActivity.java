@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private String str_confirmed, str_confirmed_new, str_active, str_active_new, str_recovered, str_recovered_new,
             str_death, str_death_new, str_tests, str_tests_new, str_last_update_time;
 
-    private LinearLayout lin_state_data;
+    private LinearLayout lin_state_data,lin_world_data;
     private SwipeRefreshLayout swipeRefreshLayout;
     private int int_active_new;
 
@@ -67,6 +67,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                Toast.makeText(MainActivity.this, "state data", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivity.this,StateWiseDataActivity.class));
+            }
+        });
+
+        lin_world_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(MainActivity.this, "state data", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this,WorldDataActivity.class));
+
             }
         });
 
@@ -190,6 +199,8 @@ public class MainActivity extends AppCompatActivity {
         tv_time = findViewById(R.id.activity_main_time_textview);
         swipeRefreshLayout=findViewById(R.id.activity_main_swipe_refresh_layout);
         lin_state_data=findViewById(R.id.activity_main_statewise_lin);
+        lin_world_data=findViewById(R.id.activity_main_world_data_lin);
+
     }
 
 
